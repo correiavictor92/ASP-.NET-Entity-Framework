@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class PessoaModels
+    public class Pessoa
     {
+        [Key]
         public int Id { get; set; }
         
         [Required(ErrorMessage="CPF é obrigatório.")]
@@ -32,5 +34,9 @@ namespace WebApplication1.Models
         [Required]
         [Phone]
         public string Telefone { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string NomeMae { get; set; }
     }
 }

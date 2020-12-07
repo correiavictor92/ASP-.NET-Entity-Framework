@@ -26,15 +26,15 @@ namespace WebApplication1.Controllers
 
         // POST: /Create/
         [HttpPost]
-        public ActionResult Create(PessoaModels model)
+        public ActionResult Create(Pessoa model)
         {
-            List<PessoaModels> lista = new List<PessoaModels>();
+            List<Pessoa> lista = new List<Pessoa>();
 
             if (ModelState.IsValid)
             {
                 if (Session["ListaPessoas"] != null)
                 {
-                    lista.AddRange((List<PessoaModels>)Session["ListaPessoas"]);
+                    lista.AddRange((List<Pessoa>)Session["ListaPessoas"]);
                 }
 
                 model.Id = lista.Count + 1;
@@ -52,11 +52,11 @@ namespace WebApplication1.Controllers
         {
             if (Session["ListaPessoas"] != null)
             {
-                var model = (List<PessoaModels>)Session["ListaPessoas"];
+                var model = (List<Pessoa>)Session["ListaPessoas"];
                 return View(model);
             }
 
-            return View(new List<PessoaModels>());
+            return View(new List<Pessoa>());
         }
 
 
@@ -66,20 +66,20 @@ namespace WebApplication1.Controllers
             //Recuperar o objeto com o id
             //Enviar o objeto encontrado para a View de Edição
 
-            if (((List<PessoaModels>)Session["ListaPessoas"]).Where(p => p.Id == id).Any())
+            if (((List<Pessoa>)Session["ListaPessoas"]).Where(p => p.Id == id).Any())
             {
-                var model = ((List<PessoaModels>)Session["ListaPessoas"])
+                var model = ((List<Pessoa>)Session["ListaPessoas"])
                     .Where(p => p.Id == id).FirstOrDefault();
 
                 return View("Create", model);
             }
 
-            return View("Create", new PessoaModels());
+            return View("Create", new Pessoa());
         }
 
         // POST: /Edit/
         [HttpPost]
-        public ActionResult Edit(PessoaModels model)
+        public ActionResult Edit(Pessoa model)
         {
             //Recuperar o objeto com o id
             //Alterar objeto com o objeto do parametro
@@ -89,22 +89,22 @@ namespace WebApplication1.Controllers
             {
                 if (Session["ListaPessoas"] != null)
                 {
-                    if (((List<PessoaModels>)Session["ListaPessoas"])
+                    if (((List<Pessoa>)Session["ListaPessoas"])
                         .Where(p => p.Id == model.Id).Any())
                     {
-                        var modelBase = ((List<PessoaModels>)Session["ListaPessoas"])
+                        var modelBase = ((List<Pessoa>)Session["ListaPessoas"])
                             .Where(p => p.Id == model.Id).FirstOrDefault();
 
                         //Atualiza seu registro com o model enviado por parametro...
-                        ((List<PessoaModels>)Session["ListaPessoas"])[model.Id - 1] = model;
+                        ((List<Pessoa>)Session["ListaPessoas"])[model.Id - 1] = model;
                     }
 
-                    var lista = (List<PessoaModels>)Session["ListaPessoas"];
+                    var lista = (List<Pessoa>)Session["ListaPessoas"];
                     return View("List", lista);
                 }
                 else
                 {
-                    return View(new List<PessoaModels>());
+                    return View(new List<Pessoa>());
                 }
             }
             else
@@ -117,20 +117,20 @@ namespace WebApplication1.Controllers
         {
             if (Session["ListaPessoas"] != null && id > 0)
             {
-                if (((List<PessoaModels>)Session["ListaPessoas"])
+                if (((List<Pessoa>)Session["ListaPessoas"])
                     .Where(p => p.Id == id).Any())
                 {
-                    var modelBase = ((List<PessoaModels>)Session["ListaPessoas"])
+                    var modelBase = ((List<Pessoa>)Session["ListaPessoas"])
                         .Where(p => p.Id == id).FirstOrDefault();
 
-                    var lista = ((List<PessoaModels>)Session["ListaPessoas"]);
+                    var lista = ((List<Pessoa>)Session["ListaPessoas"]);
                     lista.Remove(modelBase);
 
                     Session["ListaPessoas"] = lista;
                     return View("List", lista);
                 }
             }
-            return View("List", new List<PessoaModels>());
+            return View("List", new List<Pessoa>());
         }
 	}
 }
