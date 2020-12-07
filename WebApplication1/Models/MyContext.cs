@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class MyContext : DbContext
+    public class MyContext : DbContext, IDisposable
     {
         public MyContext() : base(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString) 
         { 
