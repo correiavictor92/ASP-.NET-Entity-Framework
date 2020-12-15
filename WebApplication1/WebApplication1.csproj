@@ -182,6 +182,7 @@
     <Compile Include="Models\MyContext.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Impl\PessoaService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

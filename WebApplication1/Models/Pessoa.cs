@@ -12,7 +12,7 @@ namespace WebApplication1.Models
         [Key]
         public int Id { get; set; }
         
-        [Required(ErrorMessage="CPF é obrigatório.")]
+        [Required]
         [MaxLength(11)]
         public string Cpf { get; set; }
 

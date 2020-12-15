@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.PessoaModels
+﻿@model WebApplication1.Models.Pessoa
 
 @{
     ViewBag.Title = "Cadastro de Pessoa";
@@ -18,7 +18,8 @@
 
         @using(Html.BeginForm())
         {
-          
+          <!--@Html.ValidationSummary();-->
+
             <div class="form-group">
                 @Html.LabelFor(m => Model.Cpf)
                 @Html.TextBoxFor(m => Model.Cpf, new { @class = "form-control" })
@@ -27,22 +28,32 @@
             <div class="form-group">
                 @Html.LabelFor(m => Model.Nome)
                 @Html.TextBoxFor(m => Model.Nome, new { @class = "form-control" })
+                @Html.ValidationMessageFor(mbox => Model.Nome)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => Model.Sobrenome)
                 @Html.TextBoxFor(m => Model.Sobrenome, new { @class = "form-control" })
+                @Html.ValidationMessageFor(mbox => Model.Sobrenome)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => Model.DataNascimento)
                 @Html.TextBoxFor(m => Model.DataNascimento, new { @class = "form-control" })
+                @Html.ValidationMessageFor(mbox => Model.DataNascimento)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => Model.Email)
                 @Html.TextBoxFor(m => Model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(mbox => Model.Email)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => Model.Telefone)
                 @Html.TextBoxFor(m => Model.Telefone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(mbox => Model.Telefone)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.NomeMae)
+                @Html.TextBoxFor(m => Model.NomeMae, new { @class = "form-control" })
+                @Html.ValidationMessageFor(mbox => Model.NomeMae)
             </div>
             
             <input type="submit" name="Salvar" class="btn btn-default" />

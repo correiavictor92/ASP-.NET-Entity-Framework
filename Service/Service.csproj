@@ -55,12 +55,6 @@
     <Folder Include="Spec\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebApplication1\WebApplication1.csproj">
-      <Project>{ca9d1d2f-938f-46ee-8dc8-1210743ad178}</Project>
-      <Name>WebApplication1</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
